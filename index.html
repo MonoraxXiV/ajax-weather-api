@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<header>
+<header class="mb-5 p-2">
 
 <div>
     <h1 class=" text-center"> Weather app</h1>
@@ -22,13 +22,24 @@
 <form action="#" method="post">
     <div class="field text-center">
         <label for="CityName"></label>
-        <input type="text" name="CityName" id="CityName"/>
+        <input type="text" name="CityName" id="CityName" placeholder="Type in city/country"/>
     </div>
     <div class="actions text-center">
         <button type="button" id="run">search</button>
     </div>
+
+
 </form>
 </header>
+
+<div class="container">
+
+    <p class="" id="cityDisplay"></p>
+    <div>
+    <p class="Day1"></p>
+    <p class="Temperature1"></p>
+    </div>
+</div>
 <script type='text/javascript' src='config.js'></script>
 <script type='text/javascript' src='script.js'></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
