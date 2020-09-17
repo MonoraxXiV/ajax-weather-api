@@ -1,8 +1,18 @@
 const WeatherKey = config.WEATHERK;
-var dateNumber = 0;
-var tempDay = 0;
-var allReducedDates = [];
-var arrayOfAverages = [];
+let dateNumber = 0;
+let tempDay = 0;
+let allReducedDates = [];
+let arrayOfAverages = [];
+let d = new Date();
+let weekday = new Array(7);
+weekday[0] = "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
 
 document.getElementById("run").addEventListener("click", function () {
 
@@ -50,12 +60,15 @@ function getWeatherData() {
             for (j = 0; j < compareNumber.length; j++) { //loops 6 times
                 for (i = 0; i < dataArray.length; i++) { //loops 40 times
                     //if it notices recuded date= compare number it will log datenumber, to know how much it needs to divide through for averages.
+
                     if (data.list[i].reducedDate === compareNumber[j]) {
 
                         dateNumber++
+
                         tempDay += data.list[i].main.temp;
                         weatherDescription=data.list[i].weather[0].description;
                         document.getElementsByClassName("description")[j].innerHTML =weatherDescription;
+
                         console.log(weatherDescription)
 
                     }
@@ -80,8 +93,14 @@ function getWeatherData() {
                 //shows 6 average temperatures, today+5 next days but vertically
 
                 document.getElementsByClassName("Temperature")[i].innerHTML += arrayOfAverages[i]+"°C";
+                //let dayNumber=dayOfWeek
+                let dayOfWeek = weekday[4+i];
+                document.getElementsByClassName("Day")[i].innerHTML=dayOfWeek;
+
 
             }
+            //TODO 1: switch from integer time date to weekday
+            //todo 2: pass data to forEach
 
 
         })
