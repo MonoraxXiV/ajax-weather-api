@@ -3,6 +3,7 @@ var dateNumber = 0;
 var tempDay = 0;
 var allReducedDates = [];
 var arrayOfAverages = [];
+
 document.getElementById("run").addEventListener("click", function () {
 
     getWeatherData();
@@ -44,6 +45,8 @@ function getWeatherData() {
             let setPlz = new Set(allReducedDates)
             console.log(setPlz);
             let compareNumber = [...setPlz]
+
+
             for (j = 0; j < compareNumber.length; j++) { //loops 6 times
                 for (i = 0; i < dataArray.length; i++) { //loops 40 times
                     //if it notices recuded date= compare number it will log datenumber, to know how much it needs to divide through for averages.
@@ -51,6 +54,10 @@ function getWeatherData() {
 
                         dateNumber++
                         tempDay += data.list[i].main.temp;
+                        weatherDescription=data.list[i].weather[0].description;
+                        document.getElementsByClassName("description")[j].innerHTML =weatherDescription;
+                        console.log(weatherDescription)
+
                     }
                 }
 
@@ -68,11 +75,17 @@ function getWeatherData() {
 
 
             }
+
             for (i = 0; i < arrayOfAverages.length; i++) {
                 //shows 6 average temperatures, today+5 next days but vertically
-                document.getElementsByClassName("Temperature")[i].innerHTML += arrayOfAverages[i];
+
+                document.getElementsByClassName("Temperature")[i].innerHTML += arrayOfAverages[i]+"°C";
+
             }
+
+
         })
 
 }
+
 
