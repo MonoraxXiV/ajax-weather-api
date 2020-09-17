@@ -1,4 +1,5 @@
 const WeatherKey = config.WEATHERK;
+const Key2=config.UNSPLASHKA;
 let dateNumber = 0;
 let tempDay = 0;
 let allReducedDates = [];
@@ -67,7 +68,9 @@ function getWeatherData() {
 
                         tempDay += data.list[i].main.temp;
                         weatherDescription=data.list[i].weather[0].description;
+                        weatherIcon=data.list[i].weather[0].icon;
                         document.getElementsByClassName("description")[j].innerHTML =weatherDescription;
+                        document.getElementsByClassName("weather")[j].src= "http://openweathermap.org/img/wn/"+weatherIcon+"@2x.png"
 
                         console.log(weatherDescription)
 
@@ -102,6 +105,12 @@ function getWeatherData() {
             //TODO 1: switch from integer time date to weekday
             //todo 2: pass data to forEach
 
+            fetch ('https://api.unsplash.com/photos/random?query='+input+'&client_id='+ Key2)
+                .then(response => response.json())
+                .then(image => {
+                    let imageSource=image.url
+                    document.getElementById("unsplash").setAttribute('src', image.urls.thumb)
+                })
 
         })
 
