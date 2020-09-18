@@ -1,17 +1,21 @@
 header {
     background: rgb(60, 49, 127);
-    background: linear-gradient(144deg, rgba(60, 49, 127, 1) 10%, rgba(167, 93, 214, 1) 19%, rgba(233, 155, 74, 1) 34%, rgba(218, 241, 252, 1) 48%, rgba(95, 167, 199, 1) 69%, rgba(2, 159, 220, 1) 92%, rgba(0, 86, 120, 1) 99%);
+    background: linear-gradient(144deg, rgba(60, 49, 127, 1) 10%, rgba(167, 93, 214, 1) 19%, rgba(233, 155, 74, 1) 34%, rgba(218, 241, 252, 1) 48%, rgba(95, 167, 199, 1) 69%, rgba(167, 93, 214, 1) 92%, rgba(60, 49, 127, 1) 99%);
 background-repeat: no-repeat;
     background-color: lightskyblue;
 }
 
 body{
     background-color: lightblue;
+    background-image: url("Resources/color.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
 
 }
 .field{
 
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.8);
 
 }
 .row {
