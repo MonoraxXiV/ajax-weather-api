@@ -16,7 +16,7 @@ weekday[6] = "Saturday";
 
 
 document.getElementById("run").addEventListener("click", function () {
-
+    arrayOfAverages=[];
     getWeatherData();
 
 
@@ -97,14 +97,11 @@ function getWeatherData() {
                 document.getElementsByClassName("Temperature")[i].innerHTML = arrayOfAverages[i] + "°C";
                 let dayOfWeek = weekday[d.getDay()];
 
-                let followingDays = d.getDay()
-                if (followingDays > 6) {
-                    d.getDay( 0);
-                    document.getElementsByClassName("Day")[i].innerHTML = dayOfWeek;
 
-                } else {
-                    document.getElementsByClassName("Day")[i].innerHTML = dayOfWeek;
-                }
+
+                let followingDays= weekday[ d.getDay()+i];
+                document.getElementsByClassName("Day")[i].innerHTML = followingDays;
+
 
             }
 
