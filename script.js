@@ -13,11 +13,12 @@ weekday[3] = "Wednesday";
 weekday[4] = "Thursday";
 weekday[5] = "Friday";
 weekday[6] = "Saturday";
-
+let dayOfWeek = weekday[d.getDay()];
 
 document.getElementById("run").addEventListener("click", function () {
 
     getWeatherData();
+    arrayOfAverages=[];
 
 })
 
@@ -96,8 +97,9 @@ function getWeatherData() {
                 //shows 6 average temperatures, today+5 next days but vertically
 
                 document.getElementsByClassName("Temperature")[i].innerHTML += arrayOfAverages[i]+"°C";
-                //let dayNumber=dayOfWeek
-                let dayOfWeek = weekday[4+i];
+
+
+
                 document.getElementsByClassName("Day")[i].innerHTML=dayOfWeek;
 
 
