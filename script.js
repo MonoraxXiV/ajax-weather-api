@@ -26,8 +26,6 @@ function getWeatherData() {
     let input = document.getElementById('CityName').value;
 
 
-
-
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + input + '&units=metric&appid=' + WeatherKey)
         .then(response => response.json())
         .then(data => {
@@ -99,9 +97,14 @@ function getWeatherData() {
                 document.getElementsByClassName("Temperature")[i].innerHTML = arrayOfAverages[i] + "°C";
                 let dayOfWeek = weekday[d.getDay()];
 
-               let followingDays= weekday[ d.getDay()+i];
-                document.getElementsByClassName("Day")[i].innerHTML = followingDays;
+                let followingDays = d.getDay()
+                if (followingDays > 6) {
+                    d.getDay( 0);
+                    document.getElementsByClassName("Day")[i].innerHTML = dayOfWeek;
 
+                } else {
+                    document.getElementsByClassName("Day")[i].innerHTML = dayOfWeek;
+                }
 
             }
 
@@ -111,7 +114,7 @@ function getWeatherData() {
             fetch('https://api.unsplash.com/photos/random?query=' + input + '&client_id=' + Key2)
                 .then(response => response.json())
                 .then(image => {
-                    let imageSource = image.url
+
                     document.getElementById("unsplash").setAttribute('src', image.urls.thumb)
 
                 })
