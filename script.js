@@ -1,5 +1,5 @@
 const WeatherKey = config.WEATHERK;
-const Key2=config.UNSPLASHKA;
+const Key2 = config.UNSPLASHKA;
 let dateNumber = 0;
 let tempDay = 0;
 let allReducedDates = [];
@@ -13,24 +13,25 @@ weekday[3] = "Wednesday";
 weekday[4] = "Thursday";
 weekday[5] = "Friday";
 weekday[6] = "Saturday";
-let dayOfWeek = weekday[d.getDay()];
+
 
 document.getElementById("run").addEventListener("click", function () {
 
     getWeatherData();
-    arrayOfAverages=[];
+
 
 })
 
 function getWeatherData() {
     let input = document.getElementById('CityName').value;
-    console.log(input);
+
+
 
 
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + input + '&units=metric&appid=' + WeatherKey)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+
             document.getElementById('cityDisplay').innerHTML = data.city.name; //shows correct city in text
 
             let temp = data.list[0].main.temp; //gets data from today at 3pm
@@ -39,13 +40,13 @@ function getWeatherData() {
             //shows in celcius at least.
 
             let dataArray = data.list
-            let day = 16;
+
             for (i = 0; i < dataArray.length; i++) {
                 //somehow get the days
                 let dateFull = data.list[i].dt_txt;
                 //slicing the string of days to solely have the number of the day.
                 var reducedDate = dateFull.slice(8, 10);
-                console.log(reducedDate);
+
                 //so we have day
                 //saving reduced data into the array
                 data.list[i].reducedDate = reducedDate;
@@ -55,7 +56,7 @@ function getWeatherData() {
 
             }
             let setPlz = new Set(allReducedDates)
-            console.log(setPlz);
+
             let compareNumber = [...setPlz]
 
 
@@ -68,12 +69,11 @@ function getWeatherData() {
                         dateNumber++
 
                         tempDay += data.list[i].main.temp;
-                        weatherDescription=data.list[i].weather[0].description;
-                        weatherIcon=data.list[i].weather[0].icon;
-                        document.getElementsByClassName("description")[j].innerHTML =weatherDescription;
-                        document.getElementsByClassName("weather")[j].src= "http://openweathermap.org/img/wn/"+weatherIcon+"@2x.png"
+                        weatherDescription = data.list[i].weather[0].description;
+                        weatherIcon = data.list[i].weather[0].icon;
+                        document.getElementsByClassName("description")[j].innerHTML = weatherDescription;
+                        document.getElementsByClassName("weather")[j].src = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"
 
-                        console.log(weatherDescription)
 
                     }
                 }
@@ -84,7 +84,7 @@ function getWeatherData() {
                 var roundedTempDay = Math.round(tempDay);
                 arrayOfAverages.push(roundedTempDay);
 
-                console.log(arrayOfAverages)
+
                 //emptying numbers to avoid having it stack.
                 dateNumber = 0;
                 tempDay = 0;
@@ -96,26 +96,29 @@ function getWeatherData() {
             for (i = 0; i < arrayOfAverages.length; i++) {
                 //shows 6 average temperatures, today+5 next days but vertically
 
-                document.getElementsByClassName("Temperature")[i].innerHTML += arrayOfAverages[i]+"°C";
+                document.getElementsByClassName("Temperature")[i].innerHTML = arrayOfAverages[i] + "°C";
+                let dayOfWeek = weekday[d.getDay()];
 
-
-
-                document.getElementsByClassName("Day")[i].innerHTML=dayOfWeek;
+               let followingDays= weekday[ d.getDay()+i];
+                document.getElementsByClassName("Day")[i].innerHTML = followingDays;
 
 
             }
+
             //TODO 1: switch from integer time date to weekday
             //todo 2: pass data to forEach
 
-            fetch ('https://api.unsplash.com/photos/random?query='+input+'&client_id='+ Key2)
+            fetch('https://api.unsplash.com/photos/random?query=' + input + '&client_id=' + Key2)
                 .then(response => response.json())
                 .then(image => {
-                    let imageSource=image.url
+                    let imageSource = image.url
                     document.getElementById("unsplash").setAttribute('src', image.urls.thumb)
+
                 })
 
         })
 
 }
+
 
 
