@@ -16,7 +16,7 @@ weekday[6] = "Saturday";
 
 
 document.getElementById("run").addEventListener("click", function () {
-    arrayOfAverages=[];
+    arrayOfAverages = [];
     getWeatherData();
 
 
@@ -90,7 +90,20 @@ function getWeatherData() {
 
 
             }
-
+            var month = new Array();
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
+            var month = month[d.getMonth()];
             for (i = 0; i < arrayOfAverages.length; i++) {
                 //shows 6 average temperatures, today+5 next days but vertically
 
@@ -98,9 +111,8 @@ function getWeatherData() {
                 let dayOfWeek = weekday[d.getDay()];
 
 
-
-                let followingDays= weekday[ d.getDay()+i];
-                document.getElementsByClassName("Day")[i].innerHTML = followingDays;
+                let followingDays = weekday[d.getDay() + i];
+                document.getElementsByClassName("Day")[i].innerHTML = allReducedDates[i]+" "+month;
 
 
             }
