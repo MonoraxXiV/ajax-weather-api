@@ -28,4 +28,5 @@ Then obtain a key. Use that key to replace the WeatherKey.
 
 ### Example pictures
 
-<img src="Resources/Weather-app.png" alt="Weather app example of Antwerp"  width="400">
+<img src="Resources/Weather-app.png" alt="Weather app example of Antwerp"  width="500" >  
+<img src="Resources/Toronto.png" alt="Weather app example of Toronto"  width="500" >
