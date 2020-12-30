@@ -25,3 +25,7 @@ Extra challenges
 <h2>How to use this API </h2>
 To use this api, you will need to make an account at https://home.openweathermap.org/.
 Then obtain a key. Use that key to replace the WeatherKey.
+
+### Example pictures
+
+<img src="Resources/Weather-app.png" alt="Weather app example of Antwerp"  width="400">
